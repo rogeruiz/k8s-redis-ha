@@ -20,8 +20,13 @@ spec:
       containers:
         - name: redis-sentinel-proxy
           image: flaccid/redis-sentinel-proxy
-          command:
-            - redis-sentinel-proxy -listen :6379 -sentinel redis-sentinel:26379 -master mymaster
+          env:
+            - name: LISTEN_ADDRESS
+              value: :6379
+            - name: SENTINEL_ADDRESS
+              value: redis-sentinel.default:26379
+            - name: REDIS_MASTER_NAME
+              value: mymaster
           volumeMounts:
             - name: opt
               mountPath: /opt
