@@ -12,7 +12,8 @@ spec:
     spec:
       containers:
         - name: redis-sentinel-proxy
-          image: flaccid/redis-sentinel-proxy
+          image: rogeruiz/redis-sentinel-proxy
+          imagePullPolicy: Always
           ports:
             - containerPort: 6379
           env:
